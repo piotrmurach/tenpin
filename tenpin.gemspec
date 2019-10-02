@@ -26,6 +26,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "tty-box", "~> 0.4.1"
+  spec.add_dependency "tty-cursor", "~> 0.7.0"
+  spec.add_dependency "tty-reader", "~> 0.6.0"
+  spec.add_dependency "tty-screen", "~> 0.7.0"
+  spec.add_dependency "pastel", "~> 0.7.0"
+
   spec.add_development_dependency "bundler", ">= 1.5"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.0"
