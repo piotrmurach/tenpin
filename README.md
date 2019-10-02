@@ -1,3 +1,7 @@
+<div align="center">
+  <img width="400" src="https://github.com/piotrmurach/tenpin/blob/master/assets/tenpin-logo.png" alt="tenpin logo" />
+</div>
+
 # Tenpin
 
 [![Gem Version](https://badge.fury.io/rb/tenpin.svg)][gem]
