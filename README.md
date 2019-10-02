@@ -1,5 +1,19 @@
 # Tenpin
 
+[![Gem Version](https://badge.fury.io/rb/tenpin.svg)][gem]
+[![Build Status](https://secure.travis-ci.org/piotrmurach/tenpin.svg?branch=master)][travis]
+[![Build status](https://ci.appveyor.com/api/projects/status/ne0fxoail747nwu0?svg=true)][appveyor]
+[![Code Climate](https://codeclimate.com/github/piotrmurach/tenpin/badges/gpa.svg)][codeclimate]
+[![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tenpin/badge.svg)][coverage]
+[![Inline docs](http://inch-ci.org/github/piotrmurach/tenpin.svg?branch=master)][inchpages]
+
+[gem]: http://badge.fury.io/rb/tenpin
+[travis]: http://travis-ci.org/piotrmurach/tenpin
+[appveyor]: https://ci.appveyor.com/project/piotrmurach/tenpin
+[codeclimate]: https://codeclimate.com/github/piotrmurach/tenpin
+[coverage]: https://coveralls.io/github/piotrmurach/tenpin
+[inchpages]: http://inch-ci.org/github/piotrmurach/tenpin
+
 > Terminal Tenpin Bowling game
 
 ## Installation
@@ -34,7 +48,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tenpin. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/piotrmurach/tenpin. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
