@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
+require_relative "entity"
+
 module Tenpin
   class Pin < Entity
+    SYMBOL = "¡"
+
     # Draw a pin at a position
     #
     # @api public
     def draw(canvas = $stdout)
       canvas.print cursor.move_to(pos.x, pos.y)
-      canvas.print pastel.bright_white.on_yellow("¡")
+      canvas.print pastel.bright_white.on_yellow(SYMBOL)
     end
 
     # Animate falling pin

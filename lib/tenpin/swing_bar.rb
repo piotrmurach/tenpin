@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "entity"
+
 module Tenpin
   class SwingBar < Entity
     GRADIENT_PATTERN = "░"
