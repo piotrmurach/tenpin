@@ -74,6 +74,7 @@ module Tenpin
       lane = Lane.new(pos.x, pos.y)
       pins = Pins.new(pos.x, pos.y)
       bowler = Bowler.new(pos.x + 8, pos.y + 23)
+      scoreboard = Scoreboard.new(pos.x + 23, pos.y - 1, score: [])
       power_bar = SwingBar.new(pos.x + 23, pos.y + 19,
                                gradient: SwingBar::GRADIENT_POWER)
       hook_bar = SwingBar.new(pos.x + 23, pos.y + 22,
@@ -82,6 +83,7 @@ module Tenpin
       lane.draw
       pins.draw
       bowler.draw
+      scoreboard.draw
       print power_frame
       print hook_frame
 
