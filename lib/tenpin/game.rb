@@ -9,6 +9,7 @@ require_relative "bowler"
 require_relative "lane"
 require_relative "pins"
 require_relative "position"
+require_relative "swing_bar"
 
 module Tenpin
   class Game
