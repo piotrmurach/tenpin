@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "pastel"
+require "tty-box"
 require "tty-cursor"
 require "tty-reader"
 require "tty-screen"
@@ -62,6 +63,12 @@ module Tenpin
       puts cursor.clear_screen
 
       pos = Position[(cols / 3) - 10, rows / 5]
+      power_frame = TTY::Box.frame(
+        left: pos.x + 22, top: pos.y + 18, width: 42, height: 3,
+        title: { top_left: "WEAK", top_right: "STRONG" })
+      hook_frame = TTY::Box.frame(
+        left: pos.x + 22, top: pos.y + 21, width: 42, height: 3,
+        title: { top_left: "LEFT", top_right: "RIGHT" })
 
       lane = Lane.new(pos.x, pos.y)
       pins = Pins.new(pos.x, pos.y)
@@ -74,6 +81,8 @@ module Tenpin
       lane.draw
       pins.draw
       bowler.draw
+      print power_frame
+      print hook_frame
 
       # set bowler position
       @reader.subscribe(bowler) do
