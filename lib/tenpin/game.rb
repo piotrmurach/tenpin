@@ -66,13 +66,29 @@ module Tenpin
       lane = Lane.new(pos.x, pos.y)
       pins = Pins.new(pos.x, pos.y)
       bowler = Bowler.new(pos.x + 8, pos.y + 23)
-      @reader.subscribe(bowler)
+      power_bar = SwingBar.new(pos.x + 23, pos.y + 19,
+                               gradient: SwingBar::GRADIENT_POWER)
+      hook_bar = SwingBar.new(pos.x + 23, pos.y + 22,
+                              gradient: SwingBar::GRADIENT_HOOK)
 
       lane.draw
       pins.draw
       bowler.draw
 
-      bowler.wait
+      # set bowler position
+      @reader.subscribe(bowler) do
+        bowler.wait
+      end
+
+      # measure power
+      @reader.subscribe(power_bar) do
+        power_bar.animate
+      end
+
+      # measure hook
+      @reader.subscribe(hook_bar) do
+        hook_bar.animate
+      end
 
       puts cursor.move_to(rows - 1, 0)
     end
