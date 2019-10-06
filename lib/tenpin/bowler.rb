@@ -5,7 +5,8 @@ require_relative "position"
 
 module Tenpin
   class Bowler < Entity
-    SYMBOL = "O"
+    PLAYER = "O"
+    BALL = "o"
     LEFT = Position[-1, 0]
     RIGHT = Position[1, 0]
 
@@ -18,6 +19,29 @@ module Tenpin
 
     def done?
       @done
+    end
+
+    # Bowl a ball
+    #
+    # @api public
+    def bowl(canvas = $stdout, delay: 0.1, offset: 23)
+      i = 1
+
+      while i <= offset do
+        ball_pos = Position[pos.x + 1, pos.y - i]
+
+        canvas.print cursor.move_to(ball_pos.x, ball_pos.y)
+
+        canvas.print pastel.black.on_yellow(BALL)
+
+        sleep(delay) if delay > 0
+
+        # clear ball
+        canvas.print cursor.move_to(ball_pos.x, ball_pos.y)
+        canvas.print pastel.black.on_yellow(" ")
+
+        i += 1
+      end
     end
 
     # Wait until a roll is done
@@ -33,7 +57,7 @@ module Tenpin
     #
     # @api public
     def draw(canvas = $stdout)
-      bowler = pastel.blue.on_yellow(SYMBOL)
+      bowler = pastel.blue.on_yellow(PLAYER)
       canvas.print cursor.move_to(pos.x + 1, pos.y) + bowler
     end
 
