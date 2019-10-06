@@ -56,7 +56,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/piotrm
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [GNU Affero General Public License v3.0](https://opensource.org/licenses/AGPL-3.0).
 
 ## Code of Conduct
 
@@ -64,4 +64,4 @@ Everyone interacting in the Tenpin project’s codebases, issue trackers, chat r
 
 ## Copyright
 
-Copyright (c) 2019 Piotr Murach. See LICENSE for further details.
+Copyright (c) 2019 Piotr Murach. See [LICENSE.txt](LICENSE.txt) for further details.
