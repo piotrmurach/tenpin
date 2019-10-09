@@ -5,10 +5,11 @@ require_relative "entity"
 module Tenpin
   class Scoreboard < Entity
 
-    def initialize(x, y, scores: [])
+    def initialize(x, y, scores: [], totals: [])
       super(x, y)
 
       @scores = scores
+      @totals = totals
     end
 
     # Draw a scoreboard with current scores
@@ -151,11 +152,7 @@ module Tenpin
     # @api private
     def frame_total(frame)
       width = (frame == 9 ? 6 : 5)
-      if @scores[frame].nil?
-        return " " * width
-      end
-
-      (@scores[frame][0].to_i + @scores[frame][1].to_i).to_s.rjust(width)
+      (@totals[frame] || " ").to_s.rjust(width)
     end
   end # Scoreboard
 end # Tenpin
