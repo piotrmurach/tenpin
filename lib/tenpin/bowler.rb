@@ -11,23 +11,24 @@ module Tenpin
     RIGHT = Position[1, 0]
 
     # Create a bowler
-    def initialize(x, y)
+    def initialize(x, y, offset: 23)
       super(x, y)
       @original = @pos.dup
       @done = false
+      @offset = offset
     end
 
     def done?
       @done
     end
 
-    # Bowl a ball
+    # Bowl a roll
     #
     # @api public
-    def bowl(canvas = $stdout, delay: 0.1, offset: 23)
+    def bowl(canvas = $stdout, delay: 0.1)
       i = 1
 
-      while i <= offset do
+      while i <= @offset do
         ball_pos = Position[pos.x + 1, pos.y - i]
 
         canvas.print cursor.move_to(ball_pos.x, ball_pos.y)
