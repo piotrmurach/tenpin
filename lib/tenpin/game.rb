@@ -107,7 +107,7 @@ module Tenpin
         hook_bar.animate
       end
 
-      bowler.bowl
+      bowler.bowl(pins: pins)
 
       puts cursor.move_to(rows - 1, 0)
     end

@@ -25,7 +25,7 @@ module Tenpin
     # Bowl a roll
     #
     # @api public
-    def bowl(canvas = $stdout, delay: 0.1)
+    def bowl(canvas = $stdout, pins: [], delay: 0.1)
       i = 1
 
       while i <= @offset do
@@ -34,6 +34,16 @@ module Tenpin
         canvas.print cursor.move_to(ball_pos.x, ball_pos.y)
 
         canvas.print pastel.black.on_yellow(BALL)
+
+        # collision detection
+        pins.each do |pin|
+          if pin.pos.y == ball_pos.y && pin.pos.x == ball_pos.x
+
+            pin.fall
+            pin.clear
+            pins.remove(pin)
+          end
+        end
 
         sleep(delay) if delay > 0
 
