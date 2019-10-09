@@ -64,6 +64,10 @@ module Tenpin
       puts cursor.clear_screen
 
       pos = Position[(cols / 3) - 10, rows / 5]
+      game_frame =TTY::Box.frame(
+        left: pos.x - 3, top: pos.y - 2, width: 72, height: 28,
+        title: { top_left: " TENPIN BOWLING ", bottom_right: "#{Tenpin::VERSION}" }
+      )
       power_frame = TTY::Box.frame(
         left: pos.x + 22, top: pos.y + 18, width: 42, height: 3,
         title: { top_left: "WEAK", top_right: "STRONG" })
@@ -80,6 +84,7 @@ module Tenpin
       hook_bar = SwingBar.new(pos.x + 23, pos.y + 22,
                               gradient: SwingBar::GRADIENT_HOOK)
 
+      print game_frame
       lane.draw
       pins.draw
       bowler.draw
