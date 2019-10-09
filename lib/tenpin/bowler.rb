@@ -50,6 +50,7 @@ module Tenpin
     def wait
       until @done do
         # waiting ....
+        sleep(0.01)
       end
     end
 
