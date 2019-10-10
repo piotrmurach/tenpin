@@ -93,7 +93,7 @@ module Tenpin
     alias keyenter keyreturn
 
     def keypress(event)
-      @done =  ["", "\n", "\r"].include?(event.value)
+      @done =  [" ", "\n", "\r"].include?(event.value)
     end
   end # SwingBar
 end # Tenpin
