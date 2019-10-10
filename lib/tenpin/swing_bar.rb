@@ -4,7 +4,7 @@ require_relative "entity"
 
 module Tenpin
   class SwingBar < Entity
-    GRADIENT_PATTERN = "░"
+    GRADIENT_PATTERN = "\u2591"
 
     MAX_WIDTH = 40
 

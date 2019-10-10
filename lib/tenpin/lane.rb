@@ -4,12 +4,14 @@ require_relative "entity"
 
 module Tenpin
   class Lane < Entity
+    GUTTER = "\u2591"
+
     # Draw a bowling lane
     #
     # @api public
     def draw(canvas = $stdout)
       width = 17
-      gutter = @pastel.black.on_white("░")
+      gutter = @pastel.black.on_white(GUTTER)
 
       out = []
 
