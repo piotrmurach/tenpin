@@ -10,6 +10,7 @@ require_relative "bowler"
 require_relative "lane"
 require_relative "pins"
 require_relative "position"
+require_relative "score"
 require_relative "scoreboard"
 require_relative "swing_bar"
 
