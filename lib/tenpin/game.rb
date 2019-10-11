@@ -79,36 +79,49 @@ module Tenpin
       lane = Lane.new(pos.x, pos.y)
       pins = Pins.new(pos.x, pos.y)
       bowler = Bowler.new(pos.x + 8, pos.y + 23)
+      score = Score.new
       scoreboard = Scoreboard.new(pos.x + 23, pos.y - 1)
       power_bar = SwingBar.new(pos.x + 23, pos.y + 19,
                                gradient: SwingBar::GRADIENT_POWER)
       hook_bar = SwingBar.new(pos.x + 23, pos.y + 22,
                               gradient: SwingBar::GRADIENT_HOOK)
 
-      print game_frame
-      lane.draw
-      pins.draw
-      bowler.draw
-      scoreboard.draw
-      print power_frame
-      print hook_frame
+      loop do
+        print game_frame
+        lane.draw
+        pins.draw
+        bowler.draw
+        scoreboard.draw(scores: score.frames, totals: score.frame_totals)
+        print power_frame
+        print hook_frame
 
-      # set bowler position
-      @reader.subscribe(bowler) do
-        bowler.wait
+        # set bowler position
+        @reader.subscribe(bowler) do
+          bowler.wait
+        end
+
+        # measure power
+        @reader.subscribe(power_bar) do
+          power_bar.animate
+        end
+
+        # measure hook
+        @reader.subscribe(hook_bar) do
+          hook_bar.animate
+        end
+
+        had_pins = pins.size
+        bowler.bowl(pins: pins)
+        pins_left = pins.size
+
+        score.roll(had_pins - pins_left)
+
+        bowler.reset
+        power_bar.reset
+        hook_bar.reset
+
+        print cursor.clear_screen
       end
-
-      # measure power
-      @reader.subscribe(power_bar) do
-        power_bar.animate
-      end
-
-      # measure hook
-      @reader.subscribe(hook_bar) do
-        hook_bar.animate
-      end
-
-      bowler.bowl(pins: pins)
 
       puts cursor.move_to(rows - 1, 0)
     end
