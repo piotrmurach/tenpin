@@ -4,7 +4,7 @@ RSpec.describe Tenpin::Scoreboard, "#draw" do
   let(:output) { StringIO.new }
 
   it "draws score board without scores" do
-    scoreboard = Tenpin::Scoreboard.new(0, 0, scores: [])
+    scoreboard = Tenpin::Scoreboard.new(0, 0)
 
     scoreboard.draw(output)
 
@@ -30,9 +30,9 @@ RSpec.describe Tenpin::Scoreboard, "#draw" do
       [4,2], [5,5], [0,6], [0,10], [6,4,3]
     ]
     totals = [7, 14, 34, 48, 52, 58, 68, 74, 94, 107]
-    scoreboard = Tenpin::Scoreboard.new(0, 0, scores: scores, totals: totals)
+    scoreboard = Tenpin::Scoreboard.new(0, 0)
 
-    scoreboard.draw(output)
+    scoreboard.draw(output, scores: scores, totals: totals)
 
     expect(output.string).to eq([
       "\e[1;1H _____________________________\n",

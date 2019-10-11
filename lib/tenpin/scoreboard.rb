@@ -4,18 +4,13 @@ require_relative "entity"
 
 module Tenpin
   class Scoreboard < Entity
-
-    def initialize(x, y, scores: [], totals: [])
-      super(x, y)
-
-      @scores = scores
-      @totals = totals
-    end
-
     # Draw a scoreboard with current scores
     #
     # @api public
-    def draw(canvas = $stdout)
+    def draw(canvas = $stdout, scores: [], totals: [])
+      @scores = scores
+      @totals = totals
+
       template.lines.each_with_index do |line, i|
         canvas.print @cursor.move_to(pos.x, pos.y + i) + line
       end
