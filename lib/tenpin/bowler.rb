@@ -14,8 +14,12 @@ module Tenpin
     def initialize(x, y, offset: 23)
       super(x, y)
       @original = @pos.dup
-      @done = false
       @offset = offset
+      reset
+    end
+
+    def reset
+      @done = false
     end
 
     def done?
