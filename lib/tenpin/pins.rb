@@ -16,16 +16,23 @@ module Tenpin
     def initialize(x, y, dist: 4)
       super(x, y)
 
-      @collided = []
-      @pins = []
-      positions = [
+      @positions = [
         [3, 0], [3 + dist, 0], [3 + 2*dist, 0], [3 + 3*dist,0],
         [5, 1], [5 + dist, 1], [5 + 2*dist, 1],
         [7,2], [7 + dist,2],
         [9,3]
       ]
 
-      positions.map do |cords|
+      reset
+    end
+
+    # Reset all the pins to original locations
+    #
+    # @api private
+    def reset
+      @collided = []
+      @pins = []
+      @positions.map do |cords|
         @pins << Pin.new(pos.x + cords[0], pos.y + cords[1])
       end
     end
