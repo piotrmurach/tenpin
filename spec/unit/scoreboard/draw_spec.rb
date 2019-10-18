@@ -4,7 +4,11 @@ RSpec.describe Tenpin::Scoreboard, "#draw" do
   let(:output) { StringIO.new }
 
   it "draws score board without scores" do
-    scoreboard = Tenpin::Scoreboard.new(0, 0)
+    Score= Struct.new(:frames, :frame_totals)
+    score = Score.new
+    score.frames = []
+    score.frame_totals = []
+    scoreboard = Tenpin::Scoreboard.new(0, 0, score: score)
 
     scoreboard.draw(output)
 
@@ -23,16 +27,18 @@ RSpec.describe Tenpin::Scoreboard, "#draw" do
   end
 
   it "draws score board with all scores" do
-    scores = [
+    Score = Struct.new(:frames, :frame_totals)
+    score = Score.new
+    score.frames = [
     # gutter        spare strike
       [7,0], [5,2], [3,7], [10], [2,2],
     #        spare  gutter  strike  spare
       [4,2], [5,5], [0,6], [0,10], [6,4,3]
     ]
-    totals = [7, 14, 34, 48, 52, 58, 68, 74, 94, 107]
-    scoreboard = Tenpin::Scoreboard.new(0, 0)
+    score.frame_totals = [7, 14, 34, 48, 52, 58, 68, 74, 94, 107]
+    scoreboard = Tenpin::Scoreboard.new(0, 0, score: score)
 
-    scoreboard.draw(output, scores: scores, totals: totals)
+    scoreboard.draw(output)
 
     expect(output.string).to eq([
       "\e[1;1H _____________________________\n",

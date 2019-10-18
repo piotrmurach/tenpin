@@ -4,13 +4,14 @@ require_relative "entity"
 
 module Tenpin
   class Scoreboard < Entity
+    def initialize(x, y, score: nil)
+      super(x, y)
+      @score = score
+    end
     # Draw a scoreboard with current scores
     #
     # @api public
-    def draw(canvas = $stdout, scores: [], totals: [])
-      @scores = scores
-      @totals = totals
-
+    def draw(canvas = $stdout)
       template.lines.each_with_index do |line, i|
         canvas.print @cursor.move_to(pos.x, pos.y + i) + line
       end
@@ -78,7 +79,7 @@ module Tenpin
     #
     # @api private
     def first_roll(frame)
-      scores = @scores[frame]
+      scores = @score.frames[frame]
       if scores.nil? || strike?(frame)
         "  "
       elsif scores[0] == 0
@@ -100,7 +101,7 @@ module Tenpin
     #
     # @api private
     def second_roll(frame)
-      scores = @scores[frame]
+      scores = @score.frames[frame]
       if scores.nil?
         " "
       elsif strike?(frame)
@@ -120,7 +121,7 @@ module Tenpin
     #
     # @api private
     def third_roll(frame)
-      scores = @scores[frame]
+      scores = @score.frames[frame]
       scores.nil? ? " " : (scores[2] || " ")
     end
 
@@ -128,7 +129,7 @@ module Tenpin
     #
     # @api private
     def strike?(frame)
-      scores = @scores[frame]
+      scores = @score.frames[frame]
       return false if scores.nil?
 
       scores[0].to_i == 10 || scores[1].to_i == 10
@@ -138,7 +139,7 @@ module Tenpin
     #
     # @api private
     def spare?(frame)
-      scores = @scores[frame]
+      scores = @score.frames[frame]
       return false if scores.nil?
 
       (scores[0].to_i != 10) && (scores[0].to_i + scores[1].to_i == 10)
@@ -149,7 +150,7 @@ module Tenpin
     # @api private
     def frame_total(frame)
       width = (frame == 9 ? 6 : 5)
-      (@totals[frame] || " ").to_s.rjust(width)
+      (@score.frame_totals[frame] || " ").to_s.rjust(width)
     end
   end # Scoreboard
 end # Tenpin

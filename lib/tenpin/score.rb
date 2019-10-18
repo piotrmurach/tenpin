@@ -11,7 +11,7 @@ module Tenpin
 
     # The recording of all scores in each frame
     attr_reader :frames
-  
+
     # Holds all the frame totals
     attr_reader :frame_totals
 
