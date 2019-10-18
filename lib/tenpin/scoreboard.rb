@@ -81,7 +81,7 @@ module Tenpin
       scores = @scores[frame]
       if scores.nil? || strike?(frame)
         "  "
-      elsif scores[0].to_i == 0
+      elsif scores[0] == 0
         " -"
       else
         scores[0].to_s.rjust(2)
@@ -107,8 +107,10 @@ module Tenpin
         "x"
       elsif spare?(frame)
         "/"
-      elsif scores[1].to_i == 0
+      elsif scores[1] == 0
         "-"
+      elsif scores[1].nil?
+        " "
       else
         scores[1].to_s
       end
