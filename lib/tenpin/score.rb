@@ -56,6 +56,7 @@ module Tenpin
 
       if next_frame?
         @current_frame += 1
+        yield if block_given?
       end
     end
 

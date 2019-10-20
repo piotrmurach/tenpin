@@ -117,7 +117,9 @@ module Tenpin
         bowler.bowl(pins: pins, power: power_bar.ratio, hook: hook_bar.ratio)
         pins_left = pins.size
 
-        score.roll(had_pins - pins_left)
+        score.roll(had_pins - pins_left) do
+          pins.reset
+        end
 
         bowler.reset
         power_bar.reset
