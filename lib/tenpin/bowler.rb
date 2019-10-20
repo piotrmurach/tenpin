@@ -7,14 +7,16 @@ module Tenpin
   class Bowler < Entity
     PLAYER = "O"
     BALL = "o"
+    GUTTER = "\u2591"
     LEFT = Position[-1, 0]
     RIGHT = Position[1, 0]
 
     # Create a bowler
-    def initialize(x, y, offset: 23)
+    def initialize(x, y, distance: 23, width: 17)
       super(x, y)
       @original = @pos.dup
-      @offset = offset
+      @distance = distance
+      @width = width
       reset
     end
 
@@ -26,17 +28,48 @@ module Tenpin
       @done
     end
 
+    # Check if ball is outside of the lane
+    #
+    # @param [Position] pos
+    #
+    # @return [Boolean]
+    def in_gutter?(pos)
+      pos.x <= @original.x - @width/2 || pos.x >= @original.x + @width/2
+    end
+
     # Bowl a roll
     #
+    # @param [Array[Pin]] pins
+    #   the pins in the current frame
+    # @param [Integer] power
+    #   the power value
+    # @param [Integer] hook
+    #   the hook value
+    #
     # @api public
-    def bowl(canvas = $stdout, pins: [], delay: 0.1)
+    def bowl(canvas = $stdout, pins: [], power: nil, hook: nil, delay: 0.1)
       i = 1
 
-      while i <= @offset do
-        ball_pos = Position[pos.x + 1, pos.y - i]
+      while i <= @distance do
+        angle = (hook - 50).abs
+        offset = i ** (angle / 25.0) / power.to_f
+
+        if angle < 2
+          offset = 0
+        end
+
+        if hook < 51 # bowling left
+          offset *= -1
+        end
+
+        ball_pos = Position[pos.x + 1 + offset.to_i, pos.y - i]
 
         canvas.print cursor.move_to(ball_pos.x, ball_pos.y)
 
+        if in_gutter?(ball_pos)
+          canvas.print pastel.black.on_yellow(BALL)
+          break
+        end
         canvas.print pastel.black.on_yellow(BALL)
 
         # collision detection
@@ -46,6 +79,8 @@ module Tenpin
             pin.fall
             pin.clear
             pins.remove(pin)
+
+            power *= 0.75 # reduce power
           end
         end
 
@@ -53,7 +88,11 @@ module Tenpin
 
         # clear ball
         canvas.print cursor.move_to(ball_pos.x, ball_pos.y)
-        canvas.print pastel.black.on_yellow(" ")
+        if in_gutter?(ball_pos)
+          canvas.print pastel.black.on_white(GUTTER)
+        else
+          canvas.print pastel.black.on_yellow(" ")
+        end
 
         i += 1
       end

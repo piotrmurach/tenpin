@@ -114,7 +114,7 @@ module Tenpin
         end
 
         had_pins = pins.size
-        bowler.bowl(pins: pins)
+        bowler.bowl(pins: pins, power: power_bar.ratio, hook: hook_bar.ratio)
         pins_left = pins.size
 
         score.roll(had_pins - pins_left)
