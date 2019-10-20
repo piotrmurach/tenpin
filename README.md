@@ -18,7 +18,11 @@
 [coverage]: https://coveralls.io/github/piotrmurach/tenpin
 [inchpages]: http://inch-ci.org/github/piotrmurach/tenpin
 
-> Terminal Tenpin Bowling game
+> Terminal "tenpin" bowling game
+
+Bowling known as "ten pins" is a game played by rolling a heavy ball down a narrow lane and attempting to knock down ten pins arranged in a triangle. A player can bowl up to two times per "frame". A game consists of ten frames.
+
+The maximum number of points possible is 300 which you can achieve by rolling 12 strikes.
 
 ## Installation
 
