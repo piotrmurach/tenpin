@@ -65,15 +65,18 @@ module Tenpin
       puts cursor.clear_screen
 
       pos = Position[(cols / 3) - 10, rows / 5]
+      power_pos = Position[pos.x + 22, pos.y + 10]
+      hook_pos = Position[pos.x + 22, pos.y + 14]
+
       game_frame =TTY::Box.frame(
         left: pos.x - 3, top: pos.y - 2, width: 72, height: 28,
         title: { top_left: " TENPIN BOWLING ", bottom_right: "#{Tenpin::VERSION}" }
       )
       power_frame = TTY::Box.frame(
-        left: pos.x + 22, top: pos.y + 18, width: 42, height: 3,
+        left: power_pos.x, top: power_pos.y, width: 43, height: 3,
         title: { top_left: "WEAK", top_right: "STRONG" })
       hook_frame = TTY::Box.frame(
-        left: pos.x + 22, top: pos.y + 21, width: 42, height: 3,
+        left: hook_pos.x, top: hook_pos.y, width: 43, height: 3,
         title: { top_left: "LEFT", top_right: "RIGHT" })
 
       lane = Lane.new(pos.x, pos.y)
@@ -81,9 +84,9 @@ module Tenpin
       bowler = Bowler.new(pos.x + 8, pos.y + 23)
       score = Score.new
       scoreboard = Scoreboard.new(pos.x + 23, pos.y - 1, score: score)
-      power_bar = SwingBar.new(pos.x + 23, pos.y + 19,
+      power_bar = SwingBar.new(power_pos.x + 1, power_pos.y + 1,
                                gradient: SwingBar::GRADIENT_POWER)
-      hook_bar = SwingBar.new(pos.x + 23, pos.y + 22,
+      hook_bar = SwingBar.new(hook_pos.x + 1, hook_pos.y + 1,
                               gradient: SwingBar::GRADIENT_HOOK)
 
       loop do
