@@ -56,6 +56,10 @@ module Tenpin
 
         if angle < 2
           offset = 0
+        elsif angle < 20
+          offset *= 0.5
+        elsif angle < 40
+          offset *= 0.75
         end
 
         if hook < 51 # bowling left
@@ -74,11 +78,12 @@ module Tenpin
 
         # collision detection
         pins.each do |pin|
-          if pin.pos.y == ball_pos.y && pin.pos.x == ball_pos.x
+          if pin.pos.y == ball_pos.y && (pin.pos.x == ball_pos.x ||
+              (pin.pos.x - (ball_pos.x + offset.to_i)).abs < 2)
 
+            pins.remove(pin)
             pin.fall
             pin.clear
-            pins.remove(pin)
 
             power *= 0.75 # reduce power
           end
