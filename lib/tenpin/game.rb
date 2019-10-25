@@ -67,12 +67,19 @@ module Tenpin
 
       pos = Position[(cols / 3) - 10, rows / 5]
       power_pos = Position[pos.x + 22, pos.y + 10]
-      hook_pos = Position[pos.x + 22, pos.y + 14]
+      hook_pos = Position[pos.x + 22, pos.y + 13]
 
       game_frame =TTY::Box.frame(
         left: pos.x - 3, top: pos.y - 2, width: 72, height: 28,
         title: { top_left: " TENPIN BOWLING ", bottom_right: "#{Tenpin::VERSION}" }
       )
+
+      splash_screen = SplashScreen.new(pos.x, pos.y)
+      splash_screen.draw
+      print game_frame
+      @reader.read_keypress
+      print cursor.clear_screen
+
       power_frame = TTY::Box.frame(
         left: power_pos.x, top: power_pos.y, width: 43, height: 3,
         title: { top_left: "WEAK", top_right: "STRONG" })
