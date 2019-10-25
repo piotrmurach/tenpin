@@ -12,6 +12,7 @@ require_relative "pins"
 require_relative "position"
 require_relative "score"
 require_relative "scoreboard"
+require_relative "splash_screen"
 require_relative "swing_bar"
 
 module Tenpin
