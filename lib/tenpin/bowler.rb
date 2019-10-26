@@ -8,6 +8,7 @@ module Tenpin
     PLAYER = "O"
     BALL = "o"
     GUTTER = "\u2591"
+    ARROW = "^"
     LEFT = Position[-1, 0]
     RIGHT = Position[1, 0]
 
@@ -95,6 +96,8 @@ module Tenpin
         canvas.print cursor.move_to(ball_pos.x, ball_pos.y)
         if in_gutter?(ball_pos)
           canvas.print pastel.black.on_white(GUTTER)
+        elsif ball_pos.y == @original.y - 18
+          canvas.print pastel.black.on_yellow(ARROW)
         else
           canvas.print pastel.black.on_yellow(" ")
         end
