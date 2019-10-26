@@ -4,7 +4,7 @@ require_relative "entity"
 
 module Tenpin
   class Pin < Entity
-    SYMBOL = "\u00a1"
+    SYMBOL = windows? ? "i" : "\u00a1"
 
     # Draw a pin at a position
     #
