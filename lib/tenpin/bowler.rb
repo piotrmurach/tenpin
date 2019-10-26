@@ -6,7 +6,7 @@ require_relative "position"
 module Tenpin
   class Bowler < Entity
     PLAYER = "O"
-    BALL = "o"
+    BALL = windows? ? "o" : "●"
     GUTTER = "\u2591"
     ARROW = "^"
     LEFT = Position[-1, 0]

@@ -7,6 +7,15 @@ require_relative "position"
 
 module Tenpin
   class Entity
+    # Check if Windowz
+    #
+    # @return [Boolean]
+    #
+    # @api public
+    def self.windows?
+      ::File::ALT_SEPARATOR == "\\"
+    end
+
     attr_reader :pos, :pastel, :cursor
 
     def initialize(x, y)
