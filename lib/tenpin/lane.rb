@@ -4,7 +4,7 @@ require_relative "entity"
 
 module Tenpin
   class Lane < Entity
-    GUTTER = windows? ? "\u2261" : "\u2591"
+    GUTTER = "\u2261"
 
     # Draw a bowling lane
     #
