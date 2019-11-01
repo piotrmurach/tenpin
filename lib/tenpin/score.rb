@@ -28,6 +28,15 @@ module Tenpin
       @frame_totals = []
     end
 
+    # Current frame scores
+    #
+    # @return [Array[Integer]]
+    #
+    # @api public
+    def current_frame_scores
+      @frames[current_frame] ||= []
+    end
+
     # Record how many pins knocked down in a single roll
     #
     # @param [Integer] pins
@@ -35,13 +44,14 @@ module Tenpin
     #
     # @api public
     def roll(pins)
-      (@frames[current_frame] ||= []) << pins
-      raise Stopped if @frames[current_frame].size > 3
+      return if finish?
+
+      current_frame_scores << pins
       @total += pins
 
       # Calculate bonus
       if (!last_roll? && previous_frame_strike?) ||
-        (first_roll? && previous_frame_spare?)
+         (first_roll? && previous_frame_spare?)
         @total += pins
         @frame_totals[current_frame - 1] += pins
       end
@@ -58,6 +68,16 @@ module Tenpin
         @current_frame += 1
         yield if block_given?
       end
+    end
+
+    # Check if game is finished
+    #
+    # @return [Boolean]
+    #
+    # @api public
+    def finish?
+      last_frame? && (last_roll? ||
+        (second_roll? && !(strike?(current_frame) || spare?(current_frame))))
     end
 
     private
@@ -91,7 +111,7 @@ module Tenpin
     end
 
     def first_roll?
-      !@frames[current_frame][0].nil? && @frames[current_frame][1].nil?
+      !current_frame_scores[0].nil? && current_frame_scores[1].nil?
     end
 
     def roll_first(frame)
@@ -99,7 +119,7 @@ module Tenpin
     end
 
     def second_roll?
-      !@frames[current_frame][1].nil?
+      !current_frame_scores[1].nil?
     end
 
     def roll_second(frame)
@@ -107,7 +127,7 @@ module Tenpin
     end
 
     def last_roll?
-      !@frames[current_frame][2].nil?
+      !current_frame_scores[2].nil?
     end
   end # Score
 end # Tenpin

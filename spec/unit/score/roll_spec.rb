@@ -84,12 +84,28 @@ RSpec.describe Tenpin::Score, "#roll" do
     expect(score.total).to eq(70)
   end
 
-  it "exceeds the maximum number of rolls and throws an error" do
+  it "finishes the game when a third ball is rolled in last frame without a strike or spare" do
     score = Tenpin::Score.new
 
-    expect {
-      22.times { score.roll(1) }
-    }.to raise_error(Tenpin::Score::Stopped)
+    19.times { score.roll(1) }
+
+    expect(score.finish?).to eq(false)
+
+    score.roll(1)
+
+    expect(score.finish?).to eq(true)
+  end
+
+  it "finishes the game when the maximum number of rolls" do
+    score = Tenpin::Score.new
+
+    11.times { score.roll(10) }
+
+    expect(score.finish?).to eq(false)
+
+    score.roll(10)
+
+    expect(score.finish?).to eq(true)
   end
 
   it "bowls a full game of constant spares in 10 frames" do
