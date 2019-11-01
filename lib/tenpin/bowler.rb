@@ -22,6 +22,7 @@ module Tenpin
     end
 
     def reset
+      @pos = @original.dup
       @done = false
     end
 
