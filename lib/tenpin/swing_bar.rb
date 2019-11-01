@@ -4,7 +4,7 @@ require_relative "entity"
 
 module Tenpin
   class SwingBar < Entity
-    GRADIENT_PATTERN = "\u2591"
+    GRADIENT = windows? ? "#" : "\u28ff"
 
     MAX_WIDTH = 40
 
@@ -68,7 +68,7 @@ module Tenpin
 
       if @direction == 1
         color_index = @gradient.find { |grad| ratio <= grad[0] } || @gradient[0]
-        canvas.print color_index[1].(GRADIENT_PATTERN)
+        canvas.print color_index[1].(GRADIENT)
       else
         canvas.print cursor.backward + " " + cursor.backward
       end

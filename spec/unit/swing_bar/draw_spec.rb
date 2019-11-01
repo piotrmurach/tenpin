@@ -11,7 +11,7 @@ RSpec.describe Tenpin::SwingBar, "#draw" do
 
     bar.draw(output)
 
-    expect(output.string).to eq("\e[30;42m#{Tenpin::SwingBar::GRADIENT_PATTERN}\e[0m")
+    expect(output.string).to eq("\e[30;42m#{Tenpin::SwingBar::GRADIENT}\e[0m")
   end
 
   it "draws swing bar retract position" do
