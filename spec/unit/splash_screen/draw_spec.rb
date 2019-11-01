@@ -27,11 +27,10 @@ RSpec.describe Tenpin::SplashScreen, "#draw" do
 \e[16;1H
 \e[17;1HPress Ctrl+X or Q to exit at any point of the game.
 \e[18;1H
-\e[19;1HTo start bowling you need to set the power and swing angle.
-\e[20;1HTo do this press Space/Enter key to fill up a bar and
-\e[21;1Hagain to stop it.
-\e[22;1H
-\e[23;1H\e[32mPress any key to start the game!\e[0m
+\e[19;1HTo start bowling you need to set the power and the swing angle.
+\e[20;1HPress Space/Enter key to fill up a bar and again to stop it.
+\e[21;1H
+\e[22;1H\e[32mPress any key to start the game!\e[0m
 EOS
 
     expect(output.string).to eq(expected_string.chomp)

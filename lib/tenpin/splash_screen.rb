@@ -23,9 +23,8 @@ Use LEFT ARROW, RIGHT ARROW keys to set the bowler position.
 
 Press Ctrl+X or Q to exit at any point of the game.
 
-To start bowling you need to set the power and swing angle.
-To do this press Space/Enter key to fill up a bar and
-again to stop it.
+To start bowling you need to set the power and the swing angle.
+Press Space/Enter key to fill up a bar and again to stop it.
 
       INTRO
       intro.lines.each.with_index do |line, i|
