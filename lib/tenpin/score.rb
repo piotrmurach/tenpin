@@ -99,7 +99,7 @@ module Tenpin
     end
 
     def strike?(frame)
-      roll_first(frame) == 10 || roll_second(frame) == 10
+      roll_first(frame) == 10
     end
 
     def previous_frame_spare?

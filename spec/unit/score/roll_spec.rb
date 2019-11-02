@@ -42,7 +42,7 @@ RSpec.describe Tenpin::Score, "#roll" do
     expect(score.total).to eq(28)
   end
 
-  it "bowls a strike in the 2nd roll and a bonus of 2 rolls" do
+  it "bowls a strike in the 2nd roll and a bonus of 1 rolls" do
     score = Tenpin::Score.new
 
     score.roll(0)
@@ -51,8 +51,8 @@ RSpec.describe Tenpin::Score, "#roll" do
     score.roll(1)
 
     expect(score.frames).to eq([[0, 10], [8,1]])
-    expect(score.frame_totals).to eq([19, 28])
-    expect(score.total).to eq(28)
+    expect(score.frame_totals).to eq([18, 27])
+    expect(score.total).to eq(27)
   end
 
   it "bowls a strike in the 1st frame and a spare in the 2nd frame" do
