@@ -7,6 +7,7 @@ require "tty-reader"
 require "tty-screen"
 
 require_relative "bowler"
+require_relative "info_box"
 require_relative "lane"
 require_relative "pins"
 require_relative "position"
@@ -87,11 +88,12 @@ module Tenpin
       pins = Pins.new(pos.x, pos.y)
       bowler = Bowler.new(pos.x + 8, pos.y + 23)
       score = Score.new
-      scoreboard = Scoreboard.new(pos.x + 23, pos.y - 1, score: score)
+      scoreboard = Scoreboard.new(pos.x + 22, pos.y - 1, score: score)
       power_bar = SwingBar.new(power_pos.x + 1, power_pos.y + 1,
                                gradient: SwingBar::GRADIENT_POWER)
       hook_bar = SwingBar.new(hook_pos.x + 1, hook_pos.y + 1,
                               gradient: SwingBar::GRADIENT_HOOK)
+      info_box = InfoBox.new(hook_pos.x, hook_pos.y + 4)
 
       loop do
         print game_frame
@@ -101,6 +103,8 @@ module Tenpin
         scoreboard.draw
         print power_frame
         print hook_frame
+
+        info_box.draw "Score: #{score.total}"
 
         break if score.finish?
 
@@ -134,6 +138,7 @@ module Tenpin
         print cursor.clear_screen
       end
 
+      info_box.draw "Score: #{score.total}", "", "Game finished!"
       @reader.read_keypress
       print cursor.clear_screen
       print cursor.show
