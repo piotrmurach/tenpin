@@ -34,8 +34,8 @@ module Tenpin
     def register_events
       @reader.on(:keypress) do |event|
         if [?\C-x, 'q'].include?(event.value)
-          puts cursor.clear_screen
-          puts cursor.move_to(rows - 1, 0)
+          print cursor.clear_screen
+          print cursor.move_to(0, 0)
           exit
         end
       end
@@ -44,17 +44,13 @@ module Tenpin
         Thread.abort_on_exception = true
 
         loop do
-          char = @reader.read_keypress
-          if [?\C-x, 'q'].include?(char)
-            break
-          end
+          @reader.read_keypress
         end
       end
 
       at_exit do
         print TTY::Cursor.show
         input_handler.kill
-        puts "Exiting Tenpin Bowling..."
       end
     end
 
