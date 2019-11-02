@@ -20,9 +20,11 @@
 
 > Terminal "tenpin" bowling game
 
-Bowling known as "ten pins" is a game played by rolling a heavy ball down a narrow lane and attempting to knock down ten pins arranged in a triangle. A player can bowl up to two times per "frame". A game consists of ten frames.
+Bowling known as "ten pins" is a game played by rolling a heavy ball down a narrow lane and attempting to knock down ten pins arranged in a triangle. A player can bowl up to two times per "frame", and a game consists of ten frames. A special rule applies to the last frame in which you can roll up to three times if you have a strike or a spare.
 
-The maximum number of points possible is 300 which you can achieve by rolling 12 strikes.
+If a player knocks down all ten pins in the first throw, then they have what is called a "strike", and no second ball is rolled in the frame. When some or none pins are knocked down in the first throw, then a second ball is awarded. If all pins are knocked down in the second roll, then the player gets a "spare".
+
+The maximum number of points possible is 300 which a player can get by rolling 12 strikes in a row.
 
 ## Installation
 
