@@ -18,7 +18,7 @@
 [coverage]: https://coveralls.io/github/piotrmurach/tenpin
 [inchpages]: http://inch-ci.org/github/piotrmurach/tenpin
 
-> Terminal "tenpin" bowling game
+> Terminal "tenpin" bowling game built with [TTY toolkit components](https://ttytoolkit.org/components/).
 
 Bowling known as "ten pins" is a game played by rolling a heavy ball down a narrow lane and attempting to knock down ten pins arranged in a triangle. A player can bowl up to two times per "frame", and a game consists of ten frames. A special rule applies to the last frame in which you can roll up to three times if you have a strike or a spare.
 
