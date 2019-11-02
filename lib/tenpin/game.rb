@@ -102,6 +102,8 @@ module Tenpin
         print power_frame
         print hook_frame
 
+        break if score.finish?
+
         # set bowler position
         @reader.subscribe(bowler) do
           bowler.wait
@@ -132,7 +134,10 @@ module Tenpin
         print cursor.clear_screen
       end
 
-      puts cursor.move_to(rows - 1, 0)
+      @reader.read_keypress
+      print cursor.clear_screen
+      print cursor.show
+      print cursor.move_to(0, 0)
     end
   end # Game
 end # Tenpin
