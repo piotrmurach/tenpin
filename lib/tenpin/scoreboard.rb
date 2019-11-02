@@ -132,7 +132,7 @@ module Tenpin
       scores = @score.frames[frame]
       return false if scores.nil?
 
-      scores[0].to_i == 10 || scores[1].to_i == 10
+      scores[0].to_i == 10
     end
 
     # Check frame for spare

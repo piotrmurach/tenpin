@@ -32,7 +32,7 @@ RSpec.describe Tenpin::Scoreboard, "#draw" do
     points.frames = [
     # gutter        spare strike
       [7,0], [5,2], [3,7], [10], [2,2],
-    #        spare  gutter  strike  spare
+    #        spare  gutter  spare  spare
       [4,2], [5,5], [0,6], [0,10], [6,4,3]
     ]
     points.frame_totals = [7, 14, 34, 48, 52, 58, 68, 74, 94, 107]
@@ -48,7 +48,7 @@ RSpec.describe Tenpin::Scoreboard, "#draw" do
       "\e[5;1H|_____|_____|_____|_____|_____|\n",
       "\e[6;1H ______________________________\n",
       "\e[7;1H|__6__|__7__|__8__|__9__|__10__|\n",
-      "\e[8;1H|  4|2|  5|/|  -|6|   |x| 6|/|3|\n",
+      "\e[8;1H|  4|2|  5|/|  -|6|  -|/| 6|/|3|\n",
       "\e[9;1H|   58|   68|   74|   94|   107|\n",
       "\e[10;1H|_____|_____|_____|_____|______|\n"
     ].join)
