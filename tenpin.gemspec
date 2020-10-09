@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{A terminal tenpin bowling game.}
   spec.description   = %q{A terminal tenpin bowling game.}
   spec.homepage      = "https://github.com/piotrmurach/tenpin"
-  spec.license       = "MIT"
+  spec.license       = "AGPL-3.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["bug_tracker_uri"] = "https://github.com/piotrmurach/tenpin/issues"
