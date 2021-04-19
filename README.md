@@ -5,14 +5,14 @@
 # Tenpin
 
 [![Gem Version](https://badge.fury.io/rb/tenpin.svg)][gem]
-[![Build Status](https://secure.travis-ci.org/piotrmurach/tenpin.svg?branch=master)][travis]
+[![Actions CI](https://github.com/piotrmurach/tenpin/workflows/CI/badge.svg?branch=master)][gh_actions_ci]
 [![Build status](https://ci.appveyor.com/api/projects/status/ne0fxoail747nwu0?svg=true)][appveyor]
 [![Code Climate](https://codeclimate.com/github/piotrmurach/tenpin/badges/gpa.svg)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tenpin/badge.svg)][coverage]
 [![Inline docs](http://inch-ci.org/github/piotrmurach/tenpin.svg?branch=master)][inchpages]
 
 [gem]: http://badge.fury.io/rb/tenpin
-[travis]: http://travis-ci.org/piotrmurach/tenpin
+[gh_actions_ci]: https://github.com/piotrmurach/tenpin/actions?query=workflow%3ACI
 [appveyor]: https://ci.appveyor.com/project/piotrmurach/tenpin
 [codeclimate]: https://codeclimate.com/github/piotrmurach/tenpin
 [coverage]: https://coveralls.io/github/piotrmurach/tenpin
