@@ -25,9 +25,9 @@ Gem::Specification.new do |spec|
   spec.executables   = %w[tenpin]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "tty-box", "~> 0.6.0"
+  spec.add_dependency "tty-box", "~> 0.7.0"
   spec.add_dependency "tty-cursor", "~> 0.7.1"
-  spec.add_dependency "tty-reader", "~> 0.7.0"
+  spec.add_dependency "tty-reader", "~> 0.9.0"
   spec.add_dependency "tty-screen", "~> 0.8.0"
   spec.add_dependency "pastel", "~> 0.8.0"
 
