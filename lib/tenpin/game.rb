@@ -28,11 +28,15 @@ module Tenpin
       @cursor = TTY::Cursor
       @reader = TTY::Reader.new(interrupt: :exit)
       @rows, @cols = TTY::Screen.size
+      @input_handler = nil
 
-      register_events
+      register_exit_and_cleanup
     end
 
-    def register_events
+    # Register game exit and cleanup
+    #
+    # @api private
+    def register_exit_and_cleanup
       @reader.on(:keypress) do |event|
         if [?\C-x, 'q'].include?(event.value)
           print cursor.clear_screen
@@ -41,17 +45,22 @@ module Tenpin
         end
       end
 
-      input_handler = Thread.new do
+      at_exit do
+        print TTY::Cursor.show
+        @input_handler.kill if @input_handler
+      end
+    end
+
+    # Start a thread to process keyboard input
+    #
+    # @api private
+    def start_input_handler
+      Thread.new do
         Thread.abort_on_exception = true
 
         loop do
           @reader.read_keypress
         end
-      end
-
-      at_exit do
-        print TTY::Cursor.show
-        input_handler.kill
       end
     end
 
@@ -76,6 +85,7 @@ module Tenpin
       print game_frame
       @reader.read_keypress
       print cursor.clear_screen
+      @input_handler = start_input_handler
 
       power_frame = TTY::Box.frame(
         left: power_pos.x, top: power_pos.y, width: 43, height: 3,
