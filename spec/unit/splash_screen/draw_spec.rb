@@ -4,7 +4,7 @@ RSpec.describe Tenpin::SplashScreen, "#draw" do
   let(:output) { StringIO.new }
 
   it "draws a splash screen info" do
-    screen = Tenpin::SplashScreen.new(0,0)
+    screen = Tenpin::SplashScreen.new(0,0, enable_color: true)
 
     screen.draw(output)
 

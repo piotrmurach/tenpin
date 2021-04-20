@@ -4,7 +4,7 @@ RSpec.describe Tenpin::Pin, "#clear" do
   let(:output) { StringIO.new }
 
   it "clears pin from the lane" do
-    pin = Tenpin::Pin.new(0,0)
+    pin = Tenpin::Pin.new(0, 0, enable_color: true)
 
     pin.clear(output)
 

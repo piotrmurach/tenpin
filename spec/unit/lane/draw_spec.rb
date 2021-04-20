@@ -2,10 +2,10 @@
 
 RSpec.describe Tenpin::Lane, "#draw" do
   let(:output) { StringIO.new }
-  let(:gut) { Tenpin::Lane::GUTTER}
+  let(:gut) { Tenpin::Lane::GUTTER }
 
   it "draw main bowling lane" do
-    lane = Tenpin::Lane.new(0, 0)
+    lane = Tenpin::Lane.new(0, 0, enable_color: true)
 
     lane.draw(output)
 

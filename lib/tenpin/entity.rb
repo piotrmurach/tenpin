@@ -18,9 +18,9 @@ module Tenpin
 
     attr_reader :pos, :pastel, :cursor
 
-    def initialize(x, y)
+    def initialize(x, y, enable_color: nil)
       @pos = Position[x, y]
-      @pastel = Pastel.new
+      @pastel = Pastel.new(enabled: enable_color)
       @cursor = TTY::Cursor
     end
 

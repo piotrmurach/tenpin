@@ -4,7 +4,7 @@ RSpec.describe Tenpin::Bowler, "#draw" do
   let(:output) { StringIO.new }
 
   it "draws bowler inside the lane" do
-    bowler = Tenpin::Bowler.new(0, 0)
+    bowler = Tenpin::Bowler.new(0, 0, enable_color: true)
 
     bowler.draw(output)
 

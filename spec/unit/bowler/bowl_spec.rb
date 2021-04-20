@@ -5,7 +5,7 @@ RSpec.describe Tenpin::Bowler, "#bowl" do
   let(:ball) { Tenpin::Bowler::BALL }
 
   it "bowls a straight ball inside the lane" do
-    bowler = Tenpin::Bowler.new(0, 0, distance: 3)
+    bowler = Tenpin::Bowler.new(0, 0, enable_color: true, distance: 3)
 
     bowler.bowl(output, delay: 0, hook: 50, power: 100)
 
@@ -20,7 +20,7 @@ RSpec.describe Tenpin::Bowler, "#bowl" do
   end
 
   it "bowls a left hook ball inside the lane" do
-    bowler = Tenpin::Bowler.new(0, 0, distance: 3)
+    bowler = Tenpin::Bowler.new(0, 0, enable_color: true, distance: 3)
 
     bowler.bowl(output, delay: 0, hook: 40, power: 100)
 
@@ -35,7 +35,7 @@ RSpec.describe Tenpin::Bowler, "#bowl" do
   end
 
   it "bowls outside of the lane" do
-    bowler = Tenpin::Bowler.new(0, 0, distance: 3)
+    bowler = Tenpin::Bowler.new(0, 0, enable_color: true, distance: 3)
 
     bowler.bowl(output, delay: 0, hook: 100, power: 1)
 

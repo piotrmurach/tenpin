@@ -13,8 +13,8 @@ module Tenpin
     RIGHT = Position[1, 0]
 
     # Create a bowler
-    def initialize(x, y, distance: 23, width: 17)
-      super(x, y)
+    def initialize(x, y, enable_color: nil, distance: 23, width: 17)
+      super(x, y, enable_color: enable_color)
       @original = @pos.dup
       @distance = distance
       @width = width

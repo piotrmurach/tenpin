@@ -5,7 +5,7 @@ RSpec.describe Tenpin::Pin, "#draw" do
   let(:symbol) { Tenpin::Pin::SYMBOL }
 
   it "draws a pin at a position" do
-    pin = Tenpin::Pin.new(0, 0)
+    pin = Tenpin::Pin.new(0, 0, enable_color: true)
 
     pin.draw(output)
 

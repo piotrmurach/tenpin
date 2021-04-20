@@ -3,6 +3,11 @@
 RSpec.describe Tenpin::SwingBar, "#draw" do
   let(:output) { StringIO.new }
 
+  before {
+    pastel = Pastel.new(enabled: true)
+    allow(Pastel).to receive(:new).and_return(pastel)
+  }
+
   it "draws swing bar advance position" do
     allow(Kernel).to receive(:sleep)
     bar = Tenpin::SwingBar.new(0, 0)
