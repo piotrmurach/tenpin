@@ -25,7 +25,7 @@ RSpec.describe Tenpin::Score, "#roll" do
     score.roll(2) # spare
     score.roll(9) # bonus
 
-    expect(score.frames).to eq([[8,2], [9]])
+    expect(score.frames).to eq([[8, 2], [9]])
     expect(score.frame_totals).to eq([19, 28])
     expect(score.total).to eq(28)
   end
@@ -37,7 +37,7 @@ RSpec.describe Tenpin::Score, "#roll" do
     score.roll(8) # bonus
     score.roll(1) # bonus
 
-    expect(score.frames).to eq([[10], [8,1]])
+    expect(score.frames).to eq([[10], [8, 1]])
     expect(score.frame_totals).to eq([19, 28])
     expect(score.total).to eq(28)
   end
@@ -50,7 +50,7 @@ RSpec.describe Tenpin::Score, "#roll" do
     score.roll(8)
     score.roll(1)
 
-    expect(score.frames).to eq([[0, 10], [8,1]])
+    expect(score.frames).to eq([[0, 10], [8, 1]])
     expect(score.frame_totals).to eq([18, 27])
     expect(score.total).to eq(27)
   end
@@ -66,7 +66,7 @@ RSpec.describe Tenpin::Score, "#roll" do
     score.roll(9)
     score.roll(0)
 
-    expect(score.frames).to eq([[10], [8,2], [9,0]])
+    expect(score.frames).to eq([[10], [8, 2], [9, 0]])
     expect(score.frame_totals).to eq([20, 39, 48])
     expect(score.total).to eq(48)
   end
@@ -79,7 +79,7 @@ RSpec.describe Tenpin::Score, "#roll" do
       score.roll(4)
     end
 
-    expect(score.frames).to eq(Array.new(10, [3,4]))
+    expect(score.frames).to eq(Array.new(10, [3, 4]))
     expect(score.frame_totals).to eq([7, 14, 21, 28, 35, 42, 49, 56, 63, 70])
     expect(score.total).to eq(70)
   end

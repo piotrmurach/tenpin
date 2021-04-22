@@ -43,4 +43,3 @@ RSpec.describe Tenpin::Lane, "#draw" do
     expect(output.string).to eq(expected_output)
   end
 end
-

@@ -31,9 +31,9 @@ RSpec.describe Tenpin::Scoreboard, "#draw" do
     points = Points.new
     points.frames = [
     # gutter        spare strike
-      [7,0], [5,2], [3,7], [10], [2,2],
+      [7, 0], [5, 2], [3, 7], [10], [2, 2],
     #        spare  gutter  spare  spare
-      [4,2], [5,5], [0,6], [0,10], [6,4,3]
+      [4, 2], [5, 5], [0, 6], [0, 10], [6, 4, 3]
     ]
     points.frame_totals = [7, 14, 34, 48, 52, 58, 68, 74, 94, 107]
     scoreboard = Tenpin::Scoreboard.new(0, 0, score: points)

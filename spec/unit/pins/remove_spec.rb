@@ -3,7 +3,7 @@
 RSpec.describe Tenpin::Pins, "#remove" do
   it "removes existing pin" do
     pins = Tenpin::Pins.new(0, 0)
-    pin = Tenpin::Pin.new(9,3)
+    pin = Tenpin::Pin.new(9, 3)
 
     pins.remove(pin)
 
@@ -13,7 +13,7 @@ RSpec.describe Tenpin::Pins, "#remove" do
 
   it "doesn't remove an unknown pin" do
     pins = Tenpin::Pins.new(3, 4)
-    pin = Tenpin::Pin.new(9,3) # doesn't match any pins
+    pin = Tenpin::Pin.new(9, 3) # doesn't match any pins
 
     pins.remove(pin)
 

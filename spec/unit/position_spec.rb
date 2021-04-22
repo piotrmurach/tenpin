@@ -2,21 +2,21 @@
 
 RSpec.describe Tenpin::Position do
   it "adds two position objects" do
-    pin_a = Tenpin::Position[2,3]
-    pin_b = Tenpin::Position[4,5]
+    pin_a = Tenpin::Position[2, 3]
+    pin_b = Tenpin::Position[4, 5]
 
     expect(pin_a + pin_b).to eq(Tenpin::Position[6, 8])
   end
 
   it "adds a position with a position tuple" do
-    pin_a = Tenpin::Position[2,3]
-    pin_b = [4,5]
+    pin_a = Tenpin::Position[2, 3]
+    pin_b = [4, 5]
 
     expect(pin_a + pin_b).to eq(Tenpin::Position[6, 8])
   end
 
   it "can't add object" do
-    pin_a = Tenpin::Position[2,3]
+    pin_a = Tenpin::Position[2, 3]
     pin_b = Object.new
 
     expect {
